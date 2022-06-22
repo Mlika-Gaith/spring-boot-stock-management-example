@@ -8,7 +8,7 @@
 <h2>Login</h2>
 <h3>The database included in the project contains 2 defined users with 2 defined roles : admin and user.</h3>
 <h3>The admin can view edit delete data while the user can read only.</h3>
-<h2>technologies used :</h2>
+<h2>Technologies used :</h2>
 <p align="left"> 
 <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> 
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/>
