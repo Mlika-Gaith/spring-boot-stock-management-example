@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{css/home.css}" />
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{css/navbar.css}" />
+    
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <a th:href="@{/home}"><img src="./assets/logo.svg" alt="logo" /></a>
+      </div>
+      <ul class="nav-links">
+        <li class="nav-link"><a th:href="@{/produits}">Produits<a/></li>
+        <li class="nav-link"><a th:href="@{/clients}">Clients</a></li>
+        <li class="nav-link"><a th:href="@{/factures}">Factures</a></li>
+        
+  	</ul>
+      <ul class="logout">
+        <li c lass="nav-link" th:inline="text">[[${#httpServletRequest.remoteUser}]]</li>
+        <li class="nav-link"><a th:href="@{/login?logout}">Se déconnecter</a></li>
+      </ul>
+</div>
+    </nav>
+    <div class="cards-container">
+      <div class="cards">
+        <div class="stats-card">
+          <header>
+            <p>Clients</p>
+            <i class="fa-solid fa-people-group"></i>
+          </header>
+          <section>
+            <p>Clients enregistrés dans la base de données :<span th:utext="${clients}"></span></p>
+          </section>
+        </div>
+      </div>
+      <div class="cards">
+        <div class="stats-card">
+          <header>
+            <p>Produits</p>
+            <i class="fa-solid fa-box"></i>
+          </header>
+          <section>
+            <p>
+              Produits enregistrés dans la base de données :<span th:utext="${produits}"></span>
+            </p>
+          </section>
+        </div>
+      </div>
+      <div class="cards">
+        <div class="stats-card">
+          <header>
+            <p>Factures</p>
+            <i class="fa-solid fa-file-invoice"></i>
+          </header>
+          <section>
+            <p>Nombre de factures élaborées :<span th:utext="${factures}"></span></p>
+          </section>
+        </div>
+      </div>
+      <div class="cards">
+        <div class="stats-card">
+          <header>
+            <p>Profit</p>
+            <i class="fa-solid fa-sack-dollar"></i>
+          </header>
+          <section>
+            <p>profit Total :<span th:utext="${profit}"></span> DT.</p>
+          </section>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p>Made by Ghaith Mlika</p>
+    </footer>
+    <script
+      src="https://kit.fontawesome.com/e212a7aef7.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- JavaScript Bundle with Popper -->
+    
+
+
+  </body>
+</html>

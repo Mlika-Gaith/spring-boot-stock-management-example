@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- xml name space -->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Clients</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{css/produits.css}" />
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{css/navbar.css}" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <a th:href="@{/home}"><img src="./assets/logo.svg" alt="logo" /></a>
+      </div>
+      <ul class="nav-links">
+        <li class="nav-link"><a th:href="@{/produits}">Produits<a/></li>
+        <li class="nav-link"><a th:href="@{/clients}">Clients</a></li>
+        <li class="nav-link"><a th:href="@{/factures}">Factures</a></li>
+      </ul>
+      <ul class="logout">
+        <li class="nav-link" th:inline="text">[[${#httpServletRequest.remoteUser}]]</li>
+        <li class="nav-link"><a th:href="@{/login?logout}">Se déconnecter</a></li>
+      </ul>
+    </nav>
+    <div class="table-container">
+    <form th:action="@{clients}" method="get"> 
+    	<div class="search-area">
+        	<input type="text" name="motCle" placeholder="Rechercher ..." th:value="${motCle}"/>
+        	<button>Rechercher</button>
+      	</div>
+      	
+     </form>
+      <div class="new-item">
+      	<a th:href="@{/nouveau_client}"> Nouveau Client</a>
+      	</div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Age</th>
+            <th scope="col">Email</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="client:${clients}">
+				<td th:utext="${client.id}"></td>
+				<td th:utext="${client.prenom}"></td>
+				<td th:utext="${client.nom}"></td>
+				<td th:utext="${client.age}"></td>
+				<td th:utext="${client.email}"></td>
+				<td><span id="delete"><a onClick="return confirm('Voulez vous supprimer le client ?')" th:href="@{supprimer_client(id=${client.id},page=${pageCourante}, size=${size},motCle=${motCle})}">Delete</a></span></td>
+				<td><span id="edit"><a th:href="@{modifier_client/{id}(id=${client.id})}">Edit</a></span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="my-pagination"> 
+			<ul class="pagination pagination-lg">
+				<!--status pour afficher l'index'-->
+				<li th:each="page,status:${pages}" class="page-item" th:classappend="${pageCourante}==${status.index}?'active':''">
+				<a th:href="@{clients(page=${status.index},size=${size},motCle=${motCle})}" th:text="${status.index}" class="page-link"></a>
+				</li >
+			</ul>
+	</div>
+    </div>
+    <footer>
+      <p>Made by Ghaith Mlika</p>
+    </footer>
+    <script
+      src="https://kit.fontawesome.com/e212a7aef7.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

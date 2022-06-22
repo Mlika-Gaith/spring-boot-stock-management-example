@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Nouvelle facture</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{css/new.css}" />
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{css/navbar.css}" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <a th:href="@{/home}"><img src="./assets/logo.svg" alt="logo" /></a>
+      </div>
+      <ul class="nav-links">
+        <li class="nav-link"><a th:href="@{/produits}">Produits<a/></li>
+        <li class="nav-link"><a th:href="@{/clients}">Clients</a></li>
+        <li class="nav-link"><a th:href="@{/factures}">Factures</a></li>
+      </ul>
+      <ul class="logout">
+        <li class="nav-link" th:inline="text">[[${#httpServletRequest.remoteUser}]]</li>
+        <li class="nav-link"><a th:href="@{/login?logout}">Se déconnecter</a></li>
+      </ul>
+    </nav>
+    <div class="form-container">
+      <form  th:action="@{save_facture}" method="post" modelAttribute="facture">
+        <h3>Nouvelle Facture</h3>
+        <div class="form-item">
+          <label>Désignation</label>
+          <input type="text" placeholder="Désignation"  name="designation"/>
+        </div>
+        <div class="form-item">
+          <label>Email Du Client</label>
+          <input type="email" placeholder="@Email" name="email"/>
+        </div>
+        <div class="form-item">
+          <label>Désignation Du Produit</label>
+          <input type="text" placeholder="Désignation Produit" name="produit"/>
+        </div>
+        <div class="btn-container">
+          <button type="submit">Enregistrer</button>
+        </div>
+      </form>
+    </div>
+    <footer>
+      <p>Made by Ghaith Mlika</p>
+    </footer>
+  </body>
+</html>

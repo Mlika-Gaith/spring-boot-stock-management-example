@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Succès</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{css/navbar.css}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      th:href="@{css/confirmation.css}"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <a th:href="@{/home}"><img src="./assets/logo.svg" alt="logo" /></a>
+      </div>
+      <ul class="nav-links">
+        <li class="nav-link"><a th:href="@{/produits}">Produits<a/></li>
+        <li class="nav-link"><a th:href="@{/clients}">Clients</a></li>
+        <li class="nav-link"><a th:href="@{/factures}">Factures</a></li>
+      </ul>
+      <ul class="logout">
+        <li class="nav-link" th:inline="text">[[${#httpServletRequest.remoteUser}]]</li>
+        <li class="nav-link"><a th:href="@{/login?logout}">Se déconnecter</a></li>
+      </ul>
+    </nav>
+    <div class="success-container">
+      <div class="success-card">
+        <div class="success-title">
+          <p>Ajouté avec Succès</p>
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div class="success-body">
+          <div class="success-item">
+            <label for="">ID :</label>
+            <label for="" th:text="${facture.id}"></label>
+          </div>
+          <div class="success-item">
+            <label for="">Désignation :</label>
+            <label for="" th:text="${facture.designation}"></label>
+          </div>
+          <div class="success-item">
+            <label for="">Somme :</label>
+            <label for="" th:text="${facture.somme}"></label>
+          </div>
+          
+        </div>
+        <div class="success-footer"><a th:href="@{/factures}"> Retour vers Liste des factures</a></div>
+      </div>
+    </div>
+    <footer>
+      <p>Made by Ghaith Mlika</p>
+    </footer>
+    <script
+      src="https://kit.fontawesome.com/e212a7aef7.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

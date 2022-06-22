@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Oops !!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      th:href="@{css/autorisation.css}"
+    />
+    <link rel="stylesheet" type="text/css" media="screen" th:href="@{css/navbar.css}" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <a th:href="@{/home}"><img src="./assets/logo.svg" alt="logo" /></a>
+      </div>
+    </nav>
+    <div class="container">
+      <h2>Vous n'êtes pas autorisés à accéder à cette page !!</h2>
+    </div>
+    <footer>
+      <p>Made by Ghaith Mlika</p>
+    </footer>
+  </body>
+</html>
